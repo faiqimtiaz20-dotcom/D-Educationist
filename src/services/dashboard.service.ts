@@ -1,5 +1,5 @@
 import { api } from './api'
-import type { DashboardStats } from '@/mocks/data/store'
+import { normalizeDashboardStats, type DashboardStats } from '@/lib/dashboard-stats'
 
 export interface DashboardFilters {
   partnerId?: string
@@ -7,8 +7,12 @@ export interface DashboardFilters {
 }
 
 export const dashboardService = {
-  getStats: async (params?: DashboardFilters) => {
-    const { data } = await api.get<DashboardStats>('/dashboard/stats', { params })
-    return data
+  getStats: async (params?: DashboardFilters): Promise<DashboardStats> => {
+    try {
+      const { data } = await api.get<unknown>('/dashboard/stats', { params })
+      return normalizeDashboardStats(data)
+    } catch {
+      return normalizeDashboardStats(null)
+    }
   },
 }
