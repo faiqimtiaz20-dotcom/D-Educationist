@@ -6,7 +6,7 @@ import App from '@/app/App'
 import { ErrorBoundary } from '@/components/feedback/ErrorBoundary'
 
 async function enableMocking() {
-  if (!import.meta.env.DEV) return
+  if (import.meta.env.VITE_USE_MOCK_API === 'false') return
 
   try {
     const { worker } = await import('@/mocks/browser')
