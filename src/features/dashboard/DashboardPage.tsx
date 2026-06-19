@@ -342,18 +342,18 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent className="pt-4">
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <DashboardPartnerTile label="Partner Invoices" value={stats?.partnerInvoices.total ?? 0} />
+              <DashboardPartnerTile label="Partner Invoices" value={stats?.partnerInvoices?.total ?? 0} />
               <DashboardPartnerTile
                 label="Pending Commission"
-                value={formatCurrency(stats?.partnerInvoices.pendingCommission ?? 0)}
+                value={formatCurrency(stats?.partnerInvoices?.pendingCommission ?? 0)}
               />
               <DashboardPartnerTile
                 label="University Commission"
-                value={stats?.universityCommission.total ?? 0}
+                value={stats?.universityCommission?.total ?? 0}
               />
               <DashboardPartnerTile
                 label="Uni. Pending Commission"
-                value={formatCurrency(stats?.universityCommission.pendingCommission ?? 0)}
+                value={formatCurrency(stats?.universityCommission?.pendingCommission ?? 0)}
               />
             </div>
           </CardContent>
