@@ -10,6 +10,7 @@ import universityCommissionData from './university-commission.json'
 import calendarEventsData from './calendar-events.json'
 import universitiesData from './universities.json'
 import universityMastersData from './university-masters.json'
+import type { DashboardStats } from '@/lib/dashboard-stats'
 import type {
   Application,
   CalendarEvent,
@@ -340,24 +341,7 @@ export function deleteCalendarEvents(ids: string[]): number {
   return deleteRecords(store.calendarEvents, ids)
 }
 
-export interface DashboardStats {
-  enquiries: { total: number; new: number; followUp: number; interested: number }
-  students: { total: number; documentsPending: number; onHold: number }
-  applications: { total: number; underReview: number; offerReceived: number; finalized: number }
-  visas: { total: number; inProgress: number; granted: number; rejected: number }
-  defers: { total: number }
-  enrolled: { total: number }
-  invoices: {
-    total: number
-    pending: number
-    partialPaid: number
-    fullyPaid: number
-    totalPendingAmount: number
-  }
-  partnerInvoices: { total: number; pendingCommission: number }
-  universityCommission: { total: number; pendingCommission: number }
-  partners: { total: number }
-}
+export type { DashboardStats } from '@/lib/dashboard-stats'
 
 function matchesPartnerFilter<T extends { partnerId?: string | null }>(
   item: T,
