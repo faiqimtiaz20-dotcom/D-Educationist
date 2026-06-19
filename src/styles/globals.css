@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant laptop (@media (min-width: 1024px) and (max-width: 1535px));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #1e3a5f;
+  --color-primary-foreground: #ffffff;
+  --color-sidebar: #1a2f4a;
+  --color-sidebar-hover: #243a5c;
+  --color-accent: #f97316;
+  --color-content: #f4f6f9;
+  --color-success: #22c55e;
+  --color-warning: #eab308;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-content);
+  color: #1f2937;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Laptop screens: slightly smaller base size so rem-based spacing/fonts tighten */
+@media (min-width: 1024px) and (max-width: 1535px) {
+  html {
+    font-size: 90.5%;
+  }
+}
+
+.dark .bg-content {
+  background-color: #0f172a;
+}
+
+.dark .bg-sidebar {
+  background-color: #0c1929;
+}
+
+.dark .bg-sidebar-hover,
+.dark .hover\:bg-sidebar-hover:hover {
+  background-color: #1a2f4a;
+}
+
+.dark .bg-white {
+  background-color: #1e293b;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155;
+}
+
+.dark .text-gray-900 {
+  color: #f1f5f9;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8;
+}
+
+/* FullCalendar overrides */
+.fc {
+  --fc-border-color: #e5e7eb;
+  --fc-button-bg-color: #1e3a5f;
+  --fc-button-border-color: #1e3a5f;
+  --fc-button-hover-bg-color: #2a4a73;
+  --fc-today-bg-color: #fef9c3;
+}
+
+.dark .fc {
+  --fc-border-color: #334155;
+  --fc-today-bg-color: #422006;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
